@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSession, signOut } from "next-auth/react";
 import {
   LayoutDashboard, Briefcase, Users, UserSquare2,
   Boxes, ShoppingCart, TrendingUp, Receipt,
@@ -56,6 +57,45 @@ const groups: NavGroup[] = [
     ]
   },
 ];
+
+function UserAccountBar() {
+  const { data: session } = useSession()
+  const displayName = session?.user?.name ?? session?.user?.email ?? 'Account'
+
+  return (
+    <div className="shrink-0 border-t border-[var(--cl-border)]/70 px-[13px] py-3">
+      <div className="flex items-center gap-3 px-2.5 py-2 rounded-lg text-sm text-[var(--cl-text-muted)]">
+        <Link
+          href="/settings/account/profile"
+          onClick={() => sessionStorage.setItem(USER_SETTINGS_RETURN_KEY, window.location.pathname)}
+          className="flex items-center gap-3 flex-1 min-w-0 hover:text-[var(--cl-primary)] transition-colors duration-150"
+        >
+          <UserCircle size={18} strokeWidth={1.8} className="shrink-0" />
+          <span className="font-medium truncate">{displayName}</span>
+        </Link>
+        <button
+          onClick={() => {
+            // Build the IDS end-session URL with id_token_hint (available
+            // client-side via the session) so Duende can identify and destroy
+            // the correct SSO session.  signOut() clears the NextAuth cookie
+            // and then the redirect callback in [...nextauth].ts lets NextAuth
+            // hand the browser off to IDS instead of staying on the app origin.
+            const endSession = new URL(
+              `${process.env.NEXT_PUBLIC_IDS_URL ?? 'https://localhost:7084'}/connect/endsession`
+            )
+            if (session?.idToken) endSession.searchParams.set('id_token_hint', session.idToken)
+            endSession.searchParams.set('post_logout_redirect_uri', `${window.location.origin}/auth/signin`)
+            signOut({ callbackUrl: endSession.toString() })
+          }}
+          className="shrink-0 h-7 w-7 grid place-items-center rounded-md hover:bg-[rgba(220,38,38,0.08)] hover:text-red-600 transition-colors"
+          title="Sign Out"
+        >
+          <LogOut size={16} strokeWidth={1.8} />
+        </button>
+      </div>
+    </div>
+  )
+}
 
 export function getRouteTitle(pathname: string): string {
   const all = groups.flatMap((g) => g.items);
@@ -134,26 +174,7 @@ export function Sidebar() {
         </div>
       </nav>
 
-      {/* User account — pinned to bottom */}
-      <div className="shrink-0 border-t border-[var(--cl-border)]/70 px-[13px] py-3">
-        <div className="flex items-center gap-3 px-2.5 py-2 rounded-lg text-sm text-[var(--cl-text-muted)]">
-          <Link
-            href="/settings/account/profile"
-            onClick={() => sessionStorage.setItem(USER_SETTINGS_RETURN_KEY, window.location.pathname)}
-            className="flex items-center gap-3 flex-1 min-w-0 hover:text-[var(--cl-primary)] transition-colors duration-150"
-          >
-            <UserCircle size={18} strokeWidth={1.8} className="shrink-0" />
-            <span className="font-medium truncate">John Doe</span>
-          </Link>
-          <button
-            onClick={() => { /* TODO: sign out logic */ }}
-            className="shrink-0 h-7 w-7 grid place-items-center rounded-md hover:bg-[rgba(220,38,38,0.08)] hover:text-red-600 transition-colors"
-            title="Sign Out"
-          >
-            <LogOut size={16} strokeWidth={1.8} />
-          </button>
-        </div>
-      </div>
+      <UserAccountBar />
     </aside>
   );
 }
