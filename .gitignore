@@ -21,6 +21,9 @@ dist-ssr
 
 # Local history
 .history
+ 
+# Claude local settings
+.claude/
 
 # Editor directories and files
 .vscode/*
