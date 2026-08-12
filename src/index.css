@@ -246,7 +246,10 @@
 
   /* Shimmer */
   .shimmer-box {
-    background: linear-gradient(90deg, #EFEFEF 25%, #FFFFFF 50%, #EFEFEF 75%);
+    background: linear-gradient(90deg,
+      hsl(var(--shimmer-base)) 25%,
+      hsl(var(--shimmer-highlight)) 50%,
+      hsl(var(--shimmer-base)) 75%);
     background-size: 800px 100%;
     animation: cl-shimmer 1.4s infinite linear;
     border-radius: 8px;
@@ -274,5 +277,7 @@
 
 @media print {
   .no-print { display: none !important; }
-  body { background: white; }
+  /* Printing is always light, regardless of the active theme. */
+  html.dark { color-scheme: light; }
+  body { background: white; color: #000; }
 }
