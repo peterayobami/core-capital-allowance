@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Core Ledger — Design System
+   Primary #184F97, surfaces white/#F9F9F9. All values HSL. */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 0 0% 97.6%;            /* #F9F9F9 page bg */
+    --foreground: 0 0% 20%;              /* #333333 primary text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Primary — Core Ledger blue */
+    --primary: 213 73% 35%;              /* #184F97 */
+    --primary-foreground: 0 0% 100%;
+    --primary-deep: 202 100% 25%;        /* #004A7E */
+    --primary-soft: 213 73% 35%;         /* alpha applied via /N */
+
+    /* Accent (alias of primary for legacy components) */
+    --accent: 213 73% 35%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 213 100% 96%;         /* #EBF2FF-ish */
+
+    --secondary: 0 0% 97.6%;             /* #F9F9F9 */
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 93.7%;                 /* #EFEFEF */
+    --muted-foreground: 215 9% 46%;      /* #6A7282 */
+
+    /* Status palette */
+    --success: 154 100% 31%;             /* #00A067 */
+    --success-foreground: 0 0% 100%;
+    --success-soft: 152 81% 96%;
+
+    --warning: 22 90% 56%;               /* #F47727 */
+    --warning-foreground: 0 0% 100%;
+    --warning-soft: 27 100% 95%;
+
+    --danger: 0 96% 67%;                 /* #FC5A5A */
+    --danger-foreground: 0 0% 100%;
+    --danger-soft: 0 100% 97%;
+
+    --destructive: 0 96% 67%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & inputs */
+    --border: 220 13% 91%;               /* #E5E7EB */
+    --border-strong: 0 0% 85%;           /* #D9D9D9 */
+    --input: 220 14% 96%;                /* #F9FAFB */
+    --ring: 213 73% 35%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar — WHITE per Core Ledger */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 9% 46%;
+    --sidebar-primary: 213 73% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 73% 35%;
+    --sidebar-accent-foreground: 213 73% 35%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 213 73% 35%;
+
+    /* Chart palette */
+    --chart-blue: 213 73% 45%;
+    --chart-indigo: 213 73% 35%;
+    --chart-violet: 287 69% 38%;
+    --chart-emerald: 154 100% 31%;
+    --chart-teal: 173 80% 36%;
+    --chart-amber: 22 90% 56%;
+    --chart-rose: 0 96% 67%;
+    --chart-slate: 215 9% 46%;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px 0 rgba(102,102,102,0.04);
+    --shadow-card: 0 2px 4px rgba(102,102,102,0.035), 0 0 8px rgba(102,102,102,0.059);
+    --shadow-md: 0 4px 12px -2px rgba(15,25,41,0.06), 0 2px 4px -1px rgba(15,25,41,0.04);
+    --shadow-lg: 0 10px 30px -8px rgba(15,25,41,0.10);
+    --shadow-sidebar: 3px 0 8px rgba(51,51,51,0.059);
+    --shadow-panel: -8px 0 24px rgba(16,16,16,0.12);
+    --shadow-sticky: 0 4px 6px rgba(16,16,16,0.07);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body { height: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Josefin Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .fig, .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .fig { text-align: right; }
+  .fig-neg { @apply text-danger; }
+
+  .data-card {
+    @apply bg-card border border-border rounded-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .cl-card {
+    @apply bg-card rounded-xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .status-dot { @apply inline-block h-2 w-2 rounded-full; }
+
+  /* Hidden scrollbar used in sidebar */
+  .scrollbar-hidden { scrollbar-width: none; }
+  .scrollbar-hidden::-webkit-scrollbar { display: none; }
+
+  /* Shimmer */
+  .shimmer-box {
+    background: linear-gradient(90deg, #EFEFEF 25%, #FFFFFF 50%, #EFEFEF 75%);
+    background-size: 800px 100%;
+    animation: cl-shimmer 1.4s infinite linear;
+    border-radius: 8px;
+  }
+  @keyframes cl-shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+
+  /* Type pill (Customer type tag) */
+  .cl-tag {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium;
+    background: hsl(var(--primary) / 0.18);
+    color: hsl(var(--primary));
+  }
+
+  /* Data table */
+  .data-table thead th {
+    @apply text-xs font-semibold uppercase tracking-wide text-muted-foreground bg-secondary/60 border-b border-border;
+  }
+  .data-table tbody tr { @apply border-b border-border/70 transition-colors; }
+  .data-table tbody tr:hover { @apply bg-secondary/40; }
+  .data-table tfoot td { @apply bg-secondary font-semibold border-t-2 border-border-strong; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
