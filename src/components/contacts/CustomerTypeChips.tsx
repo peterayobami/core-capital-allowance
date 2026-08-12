@@ -30,21 +30,11 @@ export function CustomerTypeChips({ value, onChange, error }: Props) {
               type="button"
               onClick={() => onChange(v)}
               className={cn(
-                "flex items-center gap-2 h-11 px-3 rounded-md text-sm transition-all duration-200",
-              )}
-              style={
+                "flex items-center gap-2 h-11 px-3 rounded-md text-sm transition-all duration-200 border",
                 selected
-                  ? {
-                      background: "rgba(24,79,151,0.07)",
-                      border: "1.2px solid #184F97",
-                      color: "#184F97",
-                    }
-                  : {
-                      background: "#FFFFFF",
-                      border: "0.8px solid #D9D9D9",
-                      color: "#6A7282",
-                    }
-              }
+                  ? "bg-primary/10 border-primary text-primary"
+                  : "bg-card border-border-strong text-muted-foreground hover:border-primary/40 hover:text-foreground",
+              )}
             >
               <Icon className="h-4 w-4" />
               <span>{label}</span>

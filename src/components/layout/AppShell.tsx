@@ -15,6 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 import { useOrgSettings } from "@/stores/org-settings.store";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 type NavRow =
   | { kind: "item"; label: string; to: string; icon: any }
@@ -63,13 +64,13 @@ function SidebarItem({ row }: { row: Extract<NavRow, { kind: "item" }> }) {
           "flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition-colors",
           isActive
             ? "text-primary font-semibold bg-primary/10"
-            : "text-[#6A7282] hover:text-primary hover:bg-primary/5",
+            : "text-muted-foreground hover:text-primary hover:bg-primary/5",
         )
       }
     >
       {({ isActive }) => (
         <>
-          <Icon className={cn("h-[18px] w-[18px] shrink-0", isActive ? "text-primary" : "text-[#6A7282]")} />
+          <Icon className={cn("h-[18px] w-[18px] shrink-0", isActive ? "text-primary" : "text-muted-foreground")} />
           <span className="flex-1 truncate">{row.label}</span>
         </>
       )}
@@ -99,7 +100,7 @@ export function Sidebar() {
               return (
                 <div
                   key={`l-${i}`}
-                  className="px-3 pt-4 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#999999]"
+                  className="px-3 pt-4 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70"
                 >
                   {row.label}
                 </div>
@@ -184,6 +185,7 @@ export function AppTopBar({ title }: { title?: string }) {
         {title ?? "Core Ledger"}
       </h1>
       <div className="flex items-center gap-1 shrink-0">
+        <ThemeToggle />
         <button className="h-8 w-8 grid place-items-center rounded-md text-muted-foreground hover:bg-secondary">
           <Bell className="h-4 w-4" />
         </button>

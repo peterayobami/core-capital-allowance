@@ -1,11 +1,8 @@
 // Avatar palette cycled by name hash (Core Ledger spec, sec 6)
-const PALETTE = [
-  { bg: "#EBF2FF", fg: "#184F97" },
-  { bg: "#E8F8EE", fg: "#00A067" },
-  { bg: "#FFF3E0", fg: "#F47727" },
-  { bg: "#F3E5F5", fg: "#7B1FA2" },
-  { bg: "#E3F2FD", fg: "#237EB5" },
-];
+const PALETTE = [1, 2, 3, 4, 5].map(i => ({
+  bg: `hsl(var(--avatar-${i}-bg))`,
+  fg: `hsl(var(--avatar-${i}-fg))`,
+}));
 
 function hash(str: string): number {
   let h = 0;

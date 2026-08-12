@@ -34,7 +34,7 @@ export function SidePanel({
   return (
     <div className="fixed inset-0 z-50">
       <div
-        className="absolute inset-0 bg-black/30 animate-in fade-in"
+        className="absolute inset-0 bg-[hsl(var(--overlay)/var(--overlay-opacity))] animate-in fade-in"
         onClick={onClose}
       />
       <aside
