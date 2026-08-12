@@ -88,6 +88,126 @@
     --shadow-sidebar: 3px 0 8px rgba(51,51,51,0.059);
     --shadow-panel: -8px 0 24px rgba(16,16,16,0.12);
     --shadow-sticky: 0 4px 6px rgba(16,16,16,0.07);
+
+    /* Avatar palette (name-hashed) */
+    --avatar-1-bg: 217 100% 96%;  --avatar-1-fg: 213 73% 35%;
+    --avatar-2-bg: 145 52% 94%;   --avatar-2-fg: 154 100% 31%;
+    --avatar-3-bg: 33 100% 94%;   --avatar-3-fg: 22 90% 45%;
+    --avatar-4-bg: 291 44% 93%;   --avatar-4-fg: 287 69% 38%;
+    --avatar-5-bg: 207 89% 94%;   --avatar-5-fg: 201 67% 42%;
+
+    /* Shimmer track */
+    --shimmer-base: 0 0% 93.7%;
+    --shimmer-highlight: 0 0% 100%;
+
+    /* Modal scrim */
+    --overlay: 0 0% 0%;
+    --overlay-opacity: 0.30;
+
+    color-scheme: light;
+  }
+
+  /* ---------------------------------------------------------------
+     DARK THEME — activated by `.dark` on <html> (next-themes, class
+     strategy). Every value below is the dark counterpart of a light
+     token above; components consume tokens only, never raw colours.
+     Surfaces step up in lightness with elevation (bg < card < popover)
+     and brand/status hues are lifted for AA contrast on dark surfaces.
+  ----------------------------------------------------------------- */
+  .dark {
+    /* Surfaces */
+    --background: 220 20% 8%;            /* page */
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 11%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 92%;
+
+    /* Primary — lifted Core Ledger blue for dark surfaces */
+    --primary: 213 84% 62%;
+    --primary-foreground: 220 25% 10%;
+    --primary-deep: 202 80% 45%;
+    --primary-soft: 213 84% 62%;
+
+    --accent: 213 84% 62%;
+    --accent-foreground: 220 25% 10%;
+    --accent-soft: 213 45% 20%;
+
+    --secondary: 220 16% 15%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted: 220 16% 17%;
+    --muted-foreground: 215 15% 65%;
+
+    /* Status palette */
+    --success: 154 62% 48%;
+    --success-foreground: 220 25% 10%;
+    --success-soft: 154 40% 16%;
+
+    --warning: 27 92% 62%;
+    --warning-foreground: 220 25% 10%;
+    --warning-soft: 27 55% 18%;
+
+    --danger: 0 84% 68%;
+    --danger-foreground: 220 25% 10%;
+    --danger-soft: 0 45% 19%;
+
+    --destructive: 0 84% 68%;
+    --destructive-foreground: 220 25% 10%;
+
+    /* Borders & inputs */
+    --border: 220 14% 22%;
+    --border-strong: 220 14% 30%;
+    --input: 220 16% 16%;
+    --ring: 213 84% 62%;
+
+    /* Sidebar */
+    --sidebar-background: 220 18% 11%;
+    --sidebar-foreground: 215 15% 65%;
+    --sidebar-primary: 213 84% 62%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 213 84% 62%;
+    --sidebar-accent-foreground: 213 84% 62%;
+    --sidebar-border: 220 14% 22%;
+    --sidebar-ring: 213 84% 62%;
+
+    /* Charts — brighter for dark canvases */
+    --chart-blue: 213 84% 62%;
+    --chart-indigo: 232 72% 68%;
+    --chart-violet: 287 70% 66%;
+    --chart-emerald: 154 62% 48%;
+    --chart-teal: 173 62% 48%;
+    --chart-amber: 27 92% 62%;
+    --chart-rose: 0 84% 68%;
+    --chart-slate: 215 15% 65%;
+
+    /* Elevation — darker, wider shadows read better on dark surfaces */
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.40);
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.40), 0 0 0 1px rgba(255,255,255,0.03);
+    --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.55), 0 2px 4px -1px rgba(0,0,0,0.40);
+    --shadow-lg: 0 10px 30px -8px rgba(0,0,0,0.65);
+    --shadow-sidebar: 3px 0 8px rgba(0,0,0,0.45);
+    --shadow-panel: -8px 0 24px rgba(0,0,0,0.60);
+    --shadow-sticky: 0 4px 6px rgba(0,0,0,0.45);
+
+    /* Avatar palette */
+    --avatar-1-bg: 213 45% 22%;  --avatar-1-fg: 213 84% 72%;
+    --avatar-2-bg: 154 40% 18%;  --avatar-2-fg: 154 62% 58%;
+    --avatar-3-bg: 27 50% 20%;   --avatar-3-fg: 27 92% 68%;
+    --avatar-4-bg: 287 40% 22%;  --avatar-4-fg: 287 70% 74%;
+    --avatar-5-bg: 201 45% 20%;  --avatar-5-fg: 201 70% 68%;
+
+    /* Shimmer track */
+    --shimmer-base: 220 16% 15%;
+    --shimmer-highlight: 220 16% 22%;
+
+    /* Modal scrim */
+    --overlay: 0 0% 0%;
+    --overlay-opacity: 0.60;
+
+    color-scheme: dark;
   }
 }
 
