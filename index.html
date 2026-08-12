@@ -6,6 +6,20 @@
     <title>Bechellente Ledger — Capital Allowance &amp; Tax Computation</title>
     <meta name="description" content="Enterprise capital allowance and Nigerian CIT tax computation suite. NTA 2025 compliant — schedule, lock and report your annual tax position.">
     <meta name="author" content="Bechellente" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Apply the stored/system theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var k = "core-ledger-theme";
+          var t = localStorage.getItem(k) || "system";
+          var dark = t === "dark" || (t === "system" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
 
     
     
