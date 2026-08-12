@@ -106,10 +106,11 @@ const App = () => (
             <Route path="/settings/org/users" element={<SettingsPlaceholder title="Users & Permissions" />} />
             <Route path="/settings/org/integrations" element={<SettingsPlaceholder title="Integrations" />} />
             <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;
