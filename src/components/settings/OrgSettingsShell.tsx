@@ -34,7 +34,7 @@ function OrgSidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto scrollbar-hidden p-3">
-        <div className="px-3 pt-1 pb-2 text-[10px] font-semibold uppercase tracking-wider text-[#999999]">
+        <div className="px-3 pt-1 pb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70">
           Configuration
         </div>
         <div className="space-y-0.5">
@@ -49,13 +49,13 @@ function OrgSidebar() {
                     "flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition-colors",
                     isActive
                       ? "text-primary font-semibold bg-primary/10"
-                      : "text-[#6A7282] hover:text-primary hover:bg-primary/5",
+                      : "text-muted-foreground hover:text-primary hover:bg-primary/5",
                   )
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <Icon className={cn("h-[18px] w-[18px] shrink-0", isActive ? "text-primary" : "text-[#6A7282]")} />
+                    <Icon className={cn("h-[18px] w-[18px] shrink-0", isActive ? "text-primary" : "text-muted-foreground")} />
                     <span className="flex-1 truncate">{row.label}</span>
                   </>
                 )}

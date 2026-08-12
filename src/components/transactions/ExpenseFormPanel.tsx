@@ -122,7 +122,7 @@ export function ExpenseFormPanel({ open, onClose, onSaved, initial }: Props) {
             title={isEdit ? "Edit Expense" : "New Expense"}
             icon={<Receipt size={18} />}
             iconBg="rgba(239,68,68,0.12)"
-            iconColor="var(--cl-danger, #EF4444)"
+            iconColor="hsl(var(--danger))"
             footer={
                 <>
                     <Button variant="outline" onClick={onClose}>Cancel</Button>

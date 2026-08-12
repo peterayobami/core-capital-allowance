@@ -96,7 +96,7 @@ export default function ProfitAndLossPage() {
       color: data.netProfitAfterTax >= 0 ? "hsl(var(--success))" : "hsl(var(--danger))" },
   ], [data]);
 
-  const PIE = ["#184F97","#00A067","#F47727","#7B2CBF","#0EA5E9","#FC5A5A","#0F766E","#9333EA"];
+  const PIE = ["--chart-indigo","--chart-emerald","--chart-amber","--chart-violet","--chart-blue","--chart-rose","--chart-teal","--chart-slate"].map(v => `hsl(var(${v}))`);
 
   const missing: MissingItem[] = [];
   if (retainedEarningsBF === 0)

@@ -15,7 +15,7 @@ interface SidePanelProps {
 }
 
 export function SidePanel({
-  open, onClose, title, description, icon, iconBg = "#FEF3C7", iconColor = "#FFC107",
+  open, onClose, title, description, icon, iconBg = "hsl(var(--warning-soft))", iconColor = "hsl(var(--warning))",
   children, footer,
 }: SidePanelProps) {
   useEffect(() => {

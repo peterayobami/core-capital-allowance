@@ -54,8 +54,8 @@ export default function BalanceSheetPage() {
   const assetComp = [
     { name: "Cash & Bank",         value: findAsset("Cash"),       color: "hsl(var(--success))" },
     { name: "Accounts Receivable", value: findAsset("Receivable"), color: "hsl(var(--primary))" },
-    { name: "WHT Receivable",      value: findAsset("WHT"),        color: "#0EA5E9" },
-    { name: "Fixed Assets (NBV)",  value: ppeNbv,                  color: "#6366F1" },
+    { name: "WHT Receivable",      value: findAsset("WHT"),        color: "hsl(var(--chart-blue))" },
+    { name: "Fixed Assets (NBV)",  value: ppeNbv,                  color: "hsl(var(--chart-indigo))" },
     { name: "Other Current",       value: otherCA,                 color: "hsl(var(--muted-foreground))" },
   ].filter(d => d.value > 0);
 

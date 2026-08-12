@@ -117,7 +117,7 @@ export function RevenueFormPanel({ open, onClose, onSaved, initial }: Props) {
             title={isEdit ? "Edit Revenue" : "New Revenue"}
             icon={<TrendingUp size={18} />}
             iconBg="rgba(16,185,129,0.12)"
-            iconColor="var(--cl-success, #10B981)"
+            iconColor="hsl(var(--success))"
             footer={
                 <>
                     <Button variant="outline" onClick={onClose}>Cancel</Button>

@@ -28,7 +28,7 @@ export function FormInput({
     <input
       {...rest}
       className={cn(
-        "w-full h-11 px-3 rounded-md bg-input text-sm text-foreground placeholder:text-[#9D9D9D]",
+        "w-full h-11 px-3 rounded-md bg-input text-sm text-foreground placeholder:text-muted-foreground/70",
         "border focus:outline-none transition-colors",
         error
           ? "border-danger"
@@ -46,7 +46,7 @@ export function FormTextarea({
     <textarea
       {...rest}
       className={cn(
-        "w-full min-h-[72px] px-3 py-2.5 rounded-md bg-input text-sm text-foreground placeholder:text-[#9D9D9D]",
+        "w-full min-h-[72px] px-3 py-2.5 rounded-md bg-input text-sm text-foreground placeholder:text-muted-foreground/70",
         "border focus:outline-none transition-colors resize-y",
         error
           ? "border-danger"
