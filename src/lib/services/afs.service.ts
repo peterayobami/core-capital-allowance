@@ -116,7 +116,7 @@ export function computeChangesInEquity(
     ...(inputs.dividendsPaid > 0
       ? [{ label: "Dividends paid", shareCapital: null, retainedEarnings: -inputs.dividendsPaid, total: -inputs.dividendsPaid }]
       : []),
-    { label: `Balance at 31 December ${year}`, shareCapital: inputs.shareCapital, retainedEarnings: closingRE, total: inputs.shareCapital + closingRE, bold: true, total: true },
+    { label: `Balance at 31 December ${year}`, shareCapital: inputs.shareCapital, retainedEarnings: closingRE, total: inputs.shareCapital + closingRE, bold: true, isTotal: true },
   ];
 
   // Prior-year comparative: opening RE rolls back by the prior year's profit.
@@ -124,7 +124,7 @@ export function computeChangesInEquity(
   const priorRows = [
     { label: `Balance at 1 January ${year - 1}`, shareCapital: inputs.shareCapital, retainedEarnings: priorOpeningRE, total: inputs.shareCapital + priorOpeningRE },
     { label: "Profit / (loss) for the year", shareCapital: null, retainedEarnings: prior.pat, total: prior.pat },
-    { label: `Balance at 31 December ${year - 1}`, shareCapital: inputs.shareCapital, retainedEarnings: inputs.retainedEarningsBF, total: inputs.shareCapital + inputs.retainedEarningsBF, bold: true, total: true },
+    { label: `Balance at 31 December ${year - 1}`, shareCapital: inputs.shareCapital, retainedEarnings: inputs.retainedEarningsBF, total: inputs.shareCapital + inputs.retainedEarningsBF, bold: true, isTotal: true },
   ];
 
   return { year, rows, priorRows, hasPrior: prior.hasData };
@@ -154,7 +154,7 @@ export function computeValueAdded(
   const pct = (v: number, base: number) => (base > 0 ? Math.round((v / base) * 1000) / 10 : 0);
 
   const applied: ValueAddedStatement["applied"] = [
-    { label: "Turnover", value: c.p.revenue, prior: pr?.p.revenue ?? null, noteRef: true } as ValueAddedStatement["applied"][number],
+    { label: "Turnover", value: c.p.revenue, prior: pr?.p.revenue ?? null, noteRef: true },
     { label: "Bought-in materials and services", value: -c.boughtIn, prior: pr ? -pr.boughtIn : null },
     { label: "Value Added", value: c.valueAdded, prior: pr?.valueAdded ?? null, bold: true, total: true, pct: 100, priorPct: pr ? 100 : undefined },
   ];

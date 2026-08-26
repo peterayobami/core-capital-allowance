@@ -40,9 +40,11 @@ export interface ChangesInEquityRow {
   label: string;
   shareCapital: number | null;
   retainedEarnings: number | null;
+  /** The money amount in the "Total" column. */
   total: number;
   bold?: boolean;
-  total?: boolean;
+  /** Visual flag: this row is a statement total (heavier rule above it). */
+  isTotal?: boolean;
 }
 
 export interface ChangesInEquityStatement {
@@ -62,6 +64,8 @@ export interface ValueAddedLine {
   indent?: number;
   bold?: boolean;
   total?: boolean;
+  /** True when the line carries a Notes-to-the-Accounts cross-reference. */
+  noteRef?: boolean;
 }
 
 export interface ValueAddedStatement {
